@@ -17,17 +17,6 @@ class App extends Component {
 		alert: null,
 	}
 
-	// async componentDidMount() {
-	// 	this.setState({ loading: true })
-
-	// 	const res = await fetch(
-	// 		`http://api.github.com/users?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
-	// 	)
-	// 	const data = await res.json()
-
-	// 	this.setState({ users: data, loading: false })
-	// }
-
 	// fetching users from github api
 	searchUsers = async (text) => {
 		this.setState({ loading: true })

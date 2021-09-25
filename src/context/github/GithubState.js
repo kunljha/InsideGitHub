@@ -63,7 +63,13 @@ const GithubState = (props) => {
 		})
 	}
 
-	// clear users
+	// clearing users from users-state
+	const clearUsers = () => {
+		dispatch({
+			type: CLEAR_USERS,
+			payload: [],
+		})
+	}
 
 	// set loading
 	const setLoading = () => {
@@ -80,6 +86,7 @@ const GithubState = (props) => {
 				searchUsers,
 				getUser,
 				getUserRepos,
+				clearUsers,
 			}}
 		>
 			{props.children}

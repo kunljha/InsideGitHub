@@ -16,31 +16,6 @@ const App = () => {
 	const [loading, setLoading] = useState(false)
 	const [alert, setAlert] = useState(null)
 
-	// fetching data of a single user
-	const getUser = async (username) => {
-		setLoading(true)
-
-		const res = await fetch(
-			`//api.github.com/users/${username}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
-		)
-		const data = await res.json()
-
-		setUser(data)
-		setLoading(false)
-	}
-
-	// fetching repos of a user
-	const getUserRepos = async (username) => {
-		setLoading(true)
-		const res = await fetch(
-			`//api.github.com/users/${username}/repos?per_page=5&sort=created:asc&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
-		)
-		const data = await res.json()
-
-		setRepos(data)
-		setLoading(false)
-	}
-
 	// clearing users from state
 	const clearUsers = () => {
 		setUsers([])
@@ -75,7 +50,7 @@ const App = () => {
 												showClear={users.length > 0 ? true : false}
 												showAlert={showAlert}
 											/>
-											<Users users={users} loading={loading} />
+											<Users />
 										</Fragment>
 									)
 								}}
@@ -85,16 +60,7 @@ const App = () => {
 								exact
 								path='/users/:login'
 								render={(props) => {
-									return (
-										<User
-											{...props}
-											getUser={getUser}
-											getUserRepos={getUserRepos}
-											user={user}
-											repos={repos}
-											loading={loading}
-										/>
-									)
+									return <User {...props} />
 								}}
 							/>
 						</Switch>

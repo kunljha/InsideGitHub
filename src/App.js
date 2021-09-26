@@ -14,16 +14,7 @@ const App = () => {
 	// const [user, setUser] = useState({})
 	// const [repos, setRepos] = useState([])
 	// const [loading, setLoading] = useState(false)
-	const [alert, setAlert] = useState(null)
-
-	// alert to user
-	const showAlert = (messg, type) => {
-		setAlert({ messg, type })
-
-		setTimeout(() => {
-			setAlert(null)
-		}, 2500)
-	}
+	// const [alert, setAlert] = useState(null)
 
 	return (
 		<GithubState>
@@ -31,7 +22,7 @@ const App = () => {
 				<div className='App'>
 					<Navbar />
 					<div className='container'>
-						<Alert alert={alert} />
+						<Alert />
 						<Switch>
 							<Route
 								exact
@@ -39,20 +30,14 @@ const App = () => {
 								render={(props) => {
 									return (
 										<Fragment>
-											<Search showAlert={showAlert} />
+											<Search />
 											<Users />
 										</Fragment>
 									)
 								}}
 							/>
 							<Route exact path='/about' component={About} />
-							<Route
-								exact
-								path='/users/:login'
-								render={(props) => {
-									return <User {...props} />
-								}}
-							/>
+							<Route exact path='/users/:login' component={User} />
 						</Switch>
 					</div>
 				</div>

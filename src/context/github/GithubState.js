@@ -67,7 +67,6 @@ const GithubState = (props) => {
 	const clearUsers = () => {
 		dispatch({
 			type: CLEAR_USERS,
-			payload: [],
 		})
 	}
 
